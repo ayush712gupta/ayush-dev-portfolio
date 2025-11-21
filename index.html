@@ -1046,7 +1046,7 @@
 
                         </form> -->
                         <form action="https://api.web3forms.com/submit" method="POST">
-                            <!-- Web3Forms Access Key -->
+
                             <input type="hidden" name="access_key" value="89e6e302-065f-4599-977f-be4fe194c785">
 
                             <!-- Anti-spam -->
@@ -1068,7 +1068,13 @@
                             <textarea class="form-control mt-3" name="message" rows="5" placeholder="Your Message"
                                 required></textarea>
 
+                            <!-- For Captcha  -->
+                            <div class="h-captcha" data-captcha="true"
+                                data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
+                                
                             <button type="submit" class="btn btn-custom w-100 mt-3">Send Message</button>
+
+
                         </form>
 
 
@@ -1292,6 +1298,8 @@
 
         observer.observe(skillsSection);
     </script>
+    <!-- Step 2: Add the Web3Forms script  -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 
 </html>

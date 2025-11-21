@@ -1020,9 +1020,9 @@
                             <button type="submit" class="btn btn-custom w-100">Send Message</button>
                         </form> -->
 
-                        <form action="https://formsubmit.co/abf0440d3ce491912b989c49afca6bf1" method="POST">
+                        <!-- <form action="https://formsubmit.co/abf0440d3ce491912b989c49afca6bf1" method="POST">
 
-                            <!-- Optional hidden settings -->
+                          
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
 
@@ -1044,7 +1044,34 @@
 
                             <button type="submit" class="btn btn-custom w-100">Send Message</button>
 
+                        </form> -->
+                        <form action="https://api.web3forms.com/submit" method="POST">
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="89e6e302-065f-4599-977f-be4fe194c785">
+
+                            <!-- Anti-spam -->
+                            <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="name" placeholder="Your Name"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email"
+                                        required>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control mt-3" name="subject" placeholder="Subject" required>
+
+                            <textarea class="form-control mt-3" name="message" rows="5" placeholder="Your Message"
+                                required></textarea>
+
+                            <button type="submit" class="btn btn-custom w-100 mt-3">Send Message</button>
                         </form>
+
+
 
                     </div>
                 </div>
@@ -1083,6 +1110,23 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- Custom JS -->
     <script>
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                alert("Thank you! Your message has been sent.");
+                form.reset();
+            } else {
+                alert("Oops! Something went wrong. Try again!");
+            }
+        });
         // Initialize AOS
         AOS.init({
             duration: 1000,
